@@ -1,4 +1,4 @@
 """
 Go Short Configuration.
 """
-URL = "http://goshort"
+SERVER_NAME = "localhost:8080"

@@ -44,7 +44,8 @@ def redirect(name):
             long_uri = flask.request.form['url']
             if validators.url(long_uri):
                 name = _insert(long_uri, name)
-                return "%s/%s" % (flask.current_app.config['URL'], name)
+                return "%s/%s" % (flask.current_app.config['SERVER_NAME'],
+                                  name)
             code = 400
             malformed_url = True
 

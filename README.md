@@ -11,6 +11,8 @@ Setup
 -----
 
 Set the URL of your goshort deployment in: `goshort/config.py`.
+Alternatively, set the environment variable `GOSHORT_URL`.
+
 To run initialize the database and run goshort from the commandline, execute:
 
 ```
