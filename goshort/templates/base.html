@@ -1,0 +1,21 @@
+<!doctype html>
+<title>Go Short</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<nav>
+  <h1><a href="{{ url_for('index') }}">Go Short</a></h1>
+</nav>
+
+<section class="content">
+  {% if malformed_url == True %}
+  <div class=danger><p>Malformed URL</p></div>
+  {% endif %}
+  <header>
+    {% block input %}{% endblock %}
+  </header>
+  {% for link in golinks %}
+  <div class="link">
+    <a href="{{ link['long_uri'] }}">{{ link['ident'] }}</a>
+  </div>
+  {% endfor %}
+</section>
