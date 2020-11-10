@@ -9,6 +9,8 @@ RUN /run.sh init
 
 FROM python:3-slim
 
+ENV GOSHORT_URL "localhost:8080"
+
 COPY --from=initializer /run.sh /run.sh
 COPY --from=initializer /goshort /goshort
 COPY --from=initializer /instance /instance

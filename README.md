@@ -5,7 +5,8 @@ Goshort is a tiny URL shortener with minimal requirements. It features:
 
   - Custom short names
   - API for shortening URLs
-  - Frontpage showing custom shortlinks.
+  - Frontpage showing custom shortlinks
+  - Easy Docker deployment
 
 Setup
 -----
@@ -24,6 +25,19 @@ Serving on http://0.0.0.0:8080
 
 Goshort will then be served on `localhost:8080`.
 
+### Docker
+
+Docker images are available here: https://hub.docker.com/r/ildefons/goshort
+
+```
+$ docker run -v <storage-dir>:/instance --rm -it ildefons/goshort init
+$ docker run -p 8080:8080 -v <storage-dir>:/instance --rm -it ildefons/goshort
+Serving on http://0.0.0.0:8080
+```
+
+In case of a Kubernetes deployment, use an init-container for the
+initialization step.
+
 Usage
 -----
 
@@ -39,3 +53,9 @@ Goshort also serves an API, which can be used to save links like so:
 $ curl -F url=http://example.com http://<your-goshort-host>
 http://<your-goshort-host>/jzqscblq
 ```
+
+Contributing
+------------
+
+Please feel free to contribute code, documentation and ideas via the issue
+tracker: https://github.com/m-ildefons/goshort/issues
