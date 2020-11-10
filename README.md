@@ -1,4 +1,5 @@
 ![Code Quality](https://github.com/m-ildefons/goshort/workflows/Code%20Quality/badge.svg?branch=master)
+
 GoShort -- Tiny Url Shortener
 =============================
 
