@@ -13,13 +13,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Init venv
-        run: |
-          ${GITHUB_WORKSPACE}/run.sh init
-          source venv/bin/activate
-
-      - name: Check Code quality
-        uses: ricardochaves/python-lint@v1.3.0
+      - name: Check Code Quality: Flake8
+        uses: py-actions/flake8@v1.0.1
         with:
-          python-root-list: goshort
-          extra-black-options: --line-length 79
+          path: goshort
+
+      - name: Check Code Quality: Isort/Black
+        uses: wrboyce/python-lint-action@v1.0.0
