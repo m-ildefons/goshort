@@ -23,7 +23,7 @@ def index():
     return redirect(None)
 
 
-@bp.route("/<string:name>", methods=("GET", "POST"))
+@bp.route("/<string:name>", methods=("GET", "POST", "HEAD"))
 def redirect(name):
     """
     Blueprint route for /<string:name>.

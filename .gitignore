@@ -1,2 +1,4 @@
 venv
 goshort/__pycache__
+goshort.egg-info
+instance
