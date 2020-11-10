@@ -16,16 +16,20 @@ jobs:
         run: |
           ${GITHUB_WORKSPACE}/run.sh init
           source venv/bin/activate
-          echo ${ENV}
           python3 -m pip install --upgrade pylint flake8 black mypy isort pycodestyle
           
       - name: Check Code
         run: |
           source venv/bin/activate
-          echo ${ENV}
+          echo "PyLint:"
           python -m pylint ${GITHUB_WORKSPACE}/goshort
+          echo "Flake8:"
           python -m flake8 ${GITHUB_WORKSPACE}/goshort
+          echo "Black:"
           python -m black --line-length 79 ${GITHUB_WORKSPACE}/goshort
+          echo "MyPy:"
           python -m mypy ${GITHUB_WORKSPACE}/goshort
+          echo "PyCodestyle:"
           python -m pycodestyle ${GITHUB_WORKSPACE}/goshort
+          echo "ISort:"
           python -m isort ${GITHUB_WORKSPACE}/goshort
