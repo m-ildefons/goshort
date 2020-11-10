@@ -4,9 +4,10 @@ Author: Moritz Röhrich <moritz@ildefons.de>
 """
 
 import os
+
 import flask
 
-from goshort import short, db
+from goshort import db, short
 
 
 def create_app(test_config=None):
@@ -21,8 +22,9 @@ def create_app(test_config=None):
     else:
         app.config.update(test_config)
 
-    app.config['SERVER_NAME'] = os.getenv("GOSHORT_URL",
-                                          app.config["SERVER_NAME"])
+    app.config["SERVER_NAME"] = os.getenv(
+        "GOSHORT_URL", app.config["SERVER_NAME"]
+    )
 
     try:
         os.makedirs(app.instance_path)
