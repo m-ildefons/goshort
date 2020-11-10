@@ -1,0 +1,23 @@
+name: Code Checker
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Init venv
+        run: ${GITHUB_WORKSPACE}/run.sh init
+
+      - name: Check Code quality
+        uses: ricardochaves/python-lint@v1.3.0
+        with:
+          python-root-list: ${GITHUB_WORKSPACE}/goshort
+          extra-black-options: --line-length 79
