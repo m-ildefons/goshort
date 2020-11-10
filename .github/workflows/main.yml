@@ -19,5 +19,5 @@ jobs:
       - name: Check Code quality
         uses: ricardochaves/python-lint@v1.3.0
         with:
-          python-root-list: ${GITHUB_WORKSPACE}/goshort
+          python-root-list: goshort
           extra-black-options: --line-length 79
