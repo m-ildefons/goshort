@@ -1,0 +1,31 @@
+name: Code Quality
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Init venv
+        run: |
+          ${GITHUB_WORKSPACE}/run.sh init
+          source venv/bin/activate
+          echo ${ENV}
+          python3 -m pip install --upgrade pylint flake8 black mypy isort pycodestyle
+          
+      - name: Check Code
+        run: |
+          source venv/bin/activate
+          echo ${ENV}
+          python -m pylint ${GITHUB_WORKSPACE}/goshort
+          python -m flake8 ${GITHUB_WORKSPACE}/goshort
+          python -m black --line-length 79 ${GITHUB_WORKSPACE}/goshort
+          python -m mypy ${GITHUB_WORKSPACE}/goshort
+          python -m pycodestyle ${GITHUB_WORKSPACE}/goshort
+          python -m isort ${GITHUB_WORKSPACE}/goshort
